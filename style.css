@@ -1,0 +1,362 @@
+/* Importa as fontes */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inconsolata:wght@400;600;700&family=Press+Start+2P&family=VT323&display=swap");
+
+/* Reseta margens e padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo base e layout da página */
+body {
+    background-color: rgb(1, 27, 3);
+    color: #fff;
+    font-family: "Fira Code", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Títulos principais */
+h1, h2 {
+    font-family: "Press Start 2P", cursive;
+    color: #00d37f;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.2rem; }
+
+/* Subtítulos secundários */
+h3 {
+    font-family: "Inconsolata", monospace;
+    color: #afafaf;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+/* Destaque de profissão/curso */
+h4 {
+    font-family: "Inconsolata", monospace;
+    color: #78ff9d;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Textos normais */
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Remove marcadores da lista */
+ul {
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Adiciona ">" verde estilo terminal */
+li::before {
+    content: "> ";
+    color: #00d37f;
+}
+
+/* Estilo de links gerais */
+a {
+    text-decoration: none;
+    color: #00d37f;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #78ff9d;
+}
+
+/* Menu flutuante com efeito vidro */
+.menu-magico {
+    position: fixed;
+    top: 22px;
+    left: 22px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    border-color: rgba(120, 255, 157, 0.22);
+    background: rgba(16, 25, 21, 0.92);
+    backdrop-filter: blur(12px);
+    transition: width 0.3s ease-in-out, gap 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Animação de expansão do menu */
+.menu-magico:hover, .menu-magico:focus-within {
+    width: 200px;
+    gap: 10px;
+    border-color: #008402;
+    transform: translateY(-3px);
+}
+
+/* Links invisíveis por padrão */
+.menu-magico a {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 0;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.5);
+    overflow: hidden;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out, background 0.3s, border-color 0.3s;
+}
+
+/* Revela links ao expandir o menu */
+.menu-magico:hover a, .menu-magico:focus-within a {
+    width: 42px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* Efeito hover nos botões do menu */
+.menu-magico a:hover, .menu-magico a:focus-visible {
+    border-color: rgba(120, 255, 157, 0.75);
+    background: rgba(72, 224, 127, 0.22);
+    outline: none;
+    transform: translateY(-5px) scale(1.04);
+}
+
+.menu-magico a:active {
+    transform: translateY(-1px) scale(0.96);
+}
+
+/* Tamanho dos icones do menu */
+.menu-magico img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Destaca a página atual no menu */
+body:has(.intro) .menu-magico a[href="index.html"],
+body:has(.projetos) .menu-magico a[href="projetos.html"],
+body:has(.contato) .menu-magico a[href="contato.html"] {
+    order: 1;
+    width: 42px;
+    opacity: 1;
+    pointer-events: auto;
+    border-color: rgba(120, 255, 157, 0.62);
+    background: linear-gradient(145deg, rgba(72, 224, 127, 0.38), rgba(72, 224, 127, 0.12));
+    transform: scale(1);
+    overflow: visible;
+}
+
+/* Estilo padrão das caixas (cartões) */
+.intro, .Hobbies, .projetos, .contato {
+    border: 1px solid rgba(120, 255, 157, 0.22);
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(22, 34, 29, 0.94), rgba(12, 19, 16, 0.94));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 30px;
+}
+
+/* Grid da seção intro (2 colunas) */
+.intro {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px 40px;
+    align-items: start;
+}
+
+/* Estilo do quadro da foto */
+.foto-perfil {
+    grid-row: 1 / span 4;
+    width: 210px;
+    aspect-ratio: 1;
+    padding: 7px;
+    border: 1px solid rgba(120, 255, 157, 0.48);
+    background: rgba(72, 224, 127, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajuste da imagem da foto */
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.intro h1, .intro h4 {
+    text-align: left;
+    margin: 0;
+}
+
+/* Posiciona o texto na coluna 2 */
+.intro section {
+    grid-column: 2;
+}
+
+/* Layout dos cartões de projeto */
+.cartao-projeto {
+    border: 1px solid rgba(120, 255, 157, 0.22);
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(22, 34, 29, 0.94), rgba(12, 19, 16, 0.94));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.cartao-projeto h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Imagens dos projetos */
+.cartao-projeto img {
+    max-width: 100%;
+    height: auto;
+    max-height: 250px;
+    border-radius: 8px;
+    border: 1px solid rgba(120, 255, 157, 0.22);
+    object-fit: cover;
+}
+
+/* Esconde texto extra por padrão */
+.conteudo-extra {
+    display: none;
+    width: 100%;
+    border-top: 1px dashed rgba(120, 255, 157, 0.3);
+    padding-top: 15px;
+    text-align: center;
+}
+
+/* Classe ativada pelo JavaScript */
+.conteudo-extra.ativo {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animação de surgir (Fade In) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botão "Ver Mais" */
+.btn-ver-mais {
+    background: rgba(72, 224, 127, 0.1);
+    color: #00d37f;
+    border: 1px solid rgba(120, 255, 157, 0.48);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: "Fira Code", monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-ver-mais:hover {
+    background: rgba(72, 224, 127, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(120, 255, 157, 0.15);
+}
+
+/* Container de contatos */
+.contato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contato div {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Botões de contato */
+.contato a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid rgba(120, 255, 157, 0.48);
+    border-radius: 8px;
+    background: rgba(72, 224, 127, 0.05);
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #00d37f;
+}
+
+/* Trava tamanho dos ícones */
+.contato a img {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Hover dos botões de contato */
+.contato a:hover {
+    background: rgba(72, 224, 127, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(120, 255, 157, 0.2);
+}
+
+/* Responsividade (Celular) */
+@media (max-width: 768px) {
+    .intro {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .foto-perfil {
+        grid-row: auto;
+        margin: 0 auto 20px auto;
+    }
+
+    .intro h1, .intro h4 {
+        text-align: center;
+    }
+
+    .intro section {
+        grid-column: 1;
+    }
+}

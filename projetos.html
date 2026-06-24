@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfólio Mateus Curti - Projetos</title>
+</head>
+
+<body>
+    <nav class="menu-magico">
+        <a href="index.html" title="Início">
+            <img src="Imagens/icon-intro.png" alt="Ícone Início">
+        </a>
+        <a href="projetos.html" title="Projetos">
+            <img src="Imagens/icon-projeto.png" alt="Ícone Projetos">
+        </a>
+        <a href="contato.html" title="Contato">
+            <img src="Imagens/icon-contato.png" alt="Ícone Contato">
+        </a>
+    </nav>
+    
+    <div class="projetos">
+        <h2>... /Projetos ...</h2>
+        <p>Aqui você encontrará uma lista dos meus principais projetos desenvolvidos ao longo do curso de Engenharia de Software.</p>
+    </div>
+
+    <div class="cartao-projeto">
+        <h2>Site de Portfólio Pessoal</h2>
+        <img src="Imagens/minha-foto.png" alt="Site de Portfólio Pessoal">
+        <p>Este site de portfólio pessoal, desenvolvido em HTML e CSS, apresenta minhas habilidades, projetos e experiências de forma clara e organizada.</p>
+        
+        <div class="conteudo-extra">
+            <p>O projeto reúne páginas de apresentação, projetos e contato, com foco em navegação simples e visual consistente. Foi uma ótima oportunidade para aplicar conceitos de Grid, Flexbox e responsividade.</p>
+        </div>
+        <button class="btn-ver-mais">Ver mais</button>
+    </div>
+
+    <div class="cartao-projeto">
+        <h2>Calculadora em Java</h2>
+        <img src="Imagens/console-calculadora.png" alt="Calculadora em Java">
+        <p>Uma calculadora simples desenvolvida em Java, um dos primeiros projetos feitos durante o curso.</p>
+        
+        <div class="conteudo-extra">
+            <p>A calculadora trabalha operações básicas e reforça conceitos iniciais de lógica de programação, estrutura de repetição e tratamento de exceções básicas.</p>
+        </div>
+        <button class="btn-ver-mais">Ver mais</button>
+    </div>
+
+    <div class="cartao-projeto">
+        <h2>Sistema de Gestão de Licitações</h2>
+        <img src="Imagens/sistema-avante1.png" alt="Página inicial do Sistema Avante Licitações">
+        <p>Uma solução feita com Notion (Arquitetura No-Code) para organizar processos de licitação em uma empresa onde trabalhei.</p>
+        
+        <div class="conteudo-extra">
+            <p>A arquitetura no-code foi pensada para centralizar informações, etapas e responsáveis de cada processo. Isso eliminou a perda de informações em planilhas isoladas e agilizou a comunicação entre o setor operacional e administrativo.</p>
+        </div>
+        <button class="btn-ver-mais">Ver mais</button>
+    </div>
+    
+    <div class="cartao-projeto">
+        <h2>Jogo em Python</h2>
+        <img src="Imagens/jogo-cobra.png" alt="Jogo em Python">
+        <p>Um jogo simples desenvolvido em Python utilizando a biblioteca Pygame.</p>
+        
+        <div class="conteudo-extra">
+            <p>O projeto explora movimentação de sprites, sistema de pontuação, detecção de colisões e loops de eventos usando os recursos nativos da biblioteca Pygame.</p>
+        </div>
+        <button class="btn-ver-mais">Ver mais</button>
+    </div>
+
+    <div class="cartao-projeto">
+        <h2>Jogo Blurgs / Em desenvolvimento</h2>
+        <img src="Imagens/logo-blurgs.png" alt="Jogo Blurgs">
+        <p>Um jogo que está em desenvolvimento com alguns colegas do curso, onde o protagonista gerencia uma hamburgueria.</p>
+        
+        <div class="conteudo-extra">
+            <p>O jogo está sendo desenvolvido em grupo e mistura elements de gerenciamento de tempo, evolução do personagem e atendimento dinâmico de clientes. O foco atual é refinar a lógica de pedidos.</p>
+        </div>
+        <button class="btn-ver-mais">Ver mais</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const botoes = document.querySelectorAll('.btn-ver-mais');
+
+            botoes.forEach(botao => {
+                botao.addEventListener('click', function() {
+                    const cartao = this.closest('.cartao-projeto');
+                    const conteudo = cartao.querySelector('.conteudo-extra');
+                    
+                    conteudo.classList.toggle('ativo');
+                    
+                    if (conteudo.classList.contains('ativo')) {
+                        this.textContent = 'Ver menos';
+                    } else {
+                        this.textContent = 'Ver mais';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
